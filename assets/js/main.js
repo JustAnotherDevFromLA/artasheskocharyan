@@ -3,6 +3,28 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCFcV_ZMq6hsRCnJVZfwNGxkp77VDAdSHw",
+  authDomain: "artasheskocharyan-3b280.firebaseapp.com",
+  databaseURL: "https://artasheskocharyan-3b280-default-rtdb.firebaseio.com",
+  projectId: "artasheskocharyan-3b280",
+  storageBucket: "artasheskocharyan-3b280.appspot.com",
+  messagingSenderId: "1035201921054",
+  appId: "1:1035201921054:web:101db1cc43e08da9002e0f",
+  measurementId: "G-BFE8PXQ784"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 (function($) {
 
