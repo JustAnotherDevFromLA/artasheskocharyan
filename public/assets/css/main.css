@@ -209,6 +209,12 @@ input, select, textarea {
 	br.clear {
 		clear: both;
 	}
+/* Background */
+
+	body {
+   		background-image: url('artasheskocharyan\public\images\pic01.jpg');
+    	color: #FFFFFF;
+	}
 
 /* Container */
 
