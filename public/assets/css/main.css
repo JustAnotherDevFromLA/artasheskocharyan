@@ -88,7 +88,7 @@ input, select, textarea {
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: rgb(255, 255, 255);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -122,7 +122,7 @@ input, select, textarea {
 	}
 
 		h1 a strong, h2 a strong, h3 a strong, h4 a strong, h5 a strong, h6 a strong {
-			color: #333;
+			color: rgb(255, 254, 254);
 		}
 
 	h2 {
@@ -2169,7 +2169,7 @@ input, select, textarea {
 				}
 
 					#nav ul li a.active span:before {
-						color: #e27689;
+						color: #d88997;
 					}
 
 /* Footer */
@@ -2253,6 +2253,9 @@ input, select, textarea {
 
 			#main > section.two {
 				background-color: #f5fafa;
+				background-image: url("../../images/pic01.jpg");
+				background-repeat: no-repeat;
+
 			}
 
 			#main > section.three {
@@ -2261,6 +2264,10 @@ input, select, textarea {
 
 			#main > section.four {
 				background-color: #e8edec;
+			}
+
+			#main > section.five {
+				background-color: #d9e4e2;
 			}
 
 /* Wide */
