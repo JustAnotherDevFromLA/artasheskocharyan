@@ -152,6 +152,7 @@ input, select, textarea {
 
 	footer {
 		margin: 2em 0 0 0;
+		font-size: 1.2em;
 	}
 
 	strong, b {
@@ -2180,7 +2181,7 @@ input, select, textarea {
 		background-color: #dce3e2;
 		padding: 3em 0 4em 0;
 		box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.05), inset 0 0.1em 0.1em 0 rgba(0, 0, 0, 0.025);
-		font-size: 0.8em;
+		font-size: 0.75em;
 	}
 
 		#footer .copyright {
@@ -2253,7 +2254,6 @@ input, select, textarea {
 
 			#main > section.two {
 				background-color: #f5fafa;
-				background-image: url("../../images/pic01.jpg");
 				background-repeat: no-repeat;
 
 			}
