@@ -1490,6 +1490,18 @@ input, select, textarea {
 
 		@media screen and (max-width: 736px) {
 
+			.pdf {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: auto;
+			}
+			
+			.pdf iframe {
+				width: 1000px;
+				height: 1200px;
+			}
+			
 			.row {
 				display: flex;
 				flex-wrap: wrap;
