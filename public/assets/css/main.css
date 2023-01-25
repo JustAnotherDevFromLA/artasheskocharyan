@@ -521,7 +521,7 @@ input, select, textarea {
 				width: 1000px;
 				height: 1200px;
 			}
-			
+
 			.row {
 				display: flex;
 				flex-wrap: wrap;
@@ -766,6 +766,18 @@ input, select, textarea {
 		}
 
 		@media screen and (min-width: 961px) and (max-width: 1620px) {
+
+			.pdf {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: auto;
+			}
+			
+			.pdf iframe {
+				width: 1000px;
+				height: 1200px;
+			}
 
 			.row {
 				display: flex;
@@ -1012,6 +1024,18 @@ input, select, textarea {
 
 		@media screen and (min-width: 961px) and (max-width: 1320px) {
 
+			.pdf {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: auto;
+			}
+			
+			.pdf iframe {
+				width: 1000px;
+				height: 1200px;
+			}
+
 			.row {
 				display: flex;
 				flex-wrap: wrap;
@@ -1257,6 +1281,18 @@ input, select, textarea {
 
 		@media screen and (max-width: 960px) {
 
+			.pdf {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				overflow: auto;
+			}
+			
+			.pdf iframe {
+				width: 1000px;
+				height: 1200px;
+			}
+			
 			.row {
 				display: flex;
 				flex-wrap: wrap;
