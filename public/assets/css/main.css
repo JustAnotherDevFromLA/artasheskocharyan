@@ -2616,8 +2616,8 @@ input, select, textarea {
 			}
 			
 			.pdf iframe {
-				width: 1000px;
-				height: 1200px;
+				width: 750px;
+				height: 1000px;
 			}
 
 		/* List */
