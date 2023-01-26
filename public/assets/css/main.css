@@ -777,9 +777,6 @@ input, select, textarea {
 			.pdf iframe {
 				width: 1000px;
 				height: 1200px;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
 			}
 
 			.row {
@@ -1037,9 +1034,6 @@ input, select, textarea {
 			.pdf iframe {
 				width: 1000px;
 				height: 1200px;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
 			}
 
 			.row {
@@ -1297,9 +1291,6 @@ input, select, textarea {
 			.pdf iframe {
 				width: 1000px;
 				height: 1200px;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
 			}
 			
 			.row {
@@ -1557,9 +1548,6 @@ input, select, textarea {
 			.pdf iframe {
 				width: 1000px;
 				height: 1200px;
-				position: absolute;
-				left: 50%;
-				transform: translateX(-50%);
 			}
 
 			.row {
@@ -2229,7 +2217,7 @@ input, select, textarea {
 				#nav ul li a span {
 					position: relative;
 					display: block;
-					font-size: 0.8em;
+					font-size: 1.0em;
 				}
 
 					#nav ul li a span:before {
@@ -2689,7 +2677,10 @@ input, select, textarea {
 			
 			.pdf iframe {
 				width: 700px;
-				height: 1000px;
+				height: 100%;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
 			}
 
 		/* List */
