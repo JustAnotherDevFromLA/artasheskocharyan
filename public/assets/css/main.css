@@ -2162,7 +2162,7 @@ input, select, textarea {
 
 	#profile {
 		position: relative;
-		margin: 1.75em 1.25em 1.5em 0.8em;
+		margin: 1.75em 1.25em 1.5em 0.75em;
 		min-height: 75px;
 		cursor: default;
 	}
