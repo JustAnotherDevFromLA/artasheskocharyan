@@ -1821,13 +1821,13 @@ input, select, textarea {
 			width: 100%;
 		}
 
-		.image.avatar65 {
+		.image.avi {
 			width: 65px;
 			height: 65px;
 			background: #f00;
 		}
 
-			.image.avatar65 img {
+			.image.avi img {
 				width: 65px;
 				height: 65px;
 			}
@@ -2161,14 +2161,14 @@ input, select, textarea {
 					color: #fff;
 				}
 
-	#logo {
+	#profile {
 		position: relative;
-		margin: 1.75em 1.25em 1.5em 0.75em;
+		margin: 1.75em 1.25em 1.5em 0.8em;
 		min-height: 75px;
 		cursor: default;
 	}
 
-		#logo h1 {
+		#profile h1 {
 			position: relative;
 			color: #fff;
 			font-weight: 600;
@@ -2176,7 +2176,7 @@ input, select, textarea {
 			line-height: 1em;
 		}
 
-		#logo p {
+		#profile p {
 			position: relative;
 			display: block;
 			font-size: 0.75em;
@@ -2185,7 +2185,7 @@ input, select, textarea {
 			margin: 0.5em 0 0 0;
 		}
 
-		#logo .image {
+		#profile .image {
 			position: absolute;
 			left: 0;
 			top: 100;
@@ -2419,7 +2419,7 @@ input, select, textarea {
 				width: 20%;
 			}
 
-			#logo .image {
+			#profile .image {
 				position: relative;
 				margin: 0 0 0.5em 0;
 			}
@@ -2534,7 +2534,7 @@ input, select, textarea {
 					position: relative;
 				}
 
-			#logo {
+			#profile {
 				margin: 1.5em 1.25em 1.25em 1.25em;
 			}
 
