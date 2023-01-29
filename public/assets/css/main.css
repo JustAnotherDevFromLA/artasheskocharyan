@@ -2184,7 +2184,7 @@ input, select, textarea {
 			margin: 0.5em 0 0 0;
 		}
 
-		#profile .image {
+		#profile .image.avi {
 			position: absolute;
 			left: 0;
 			top: 100;
