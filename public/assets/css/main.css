@@ -2325,11 +2325,16 @@ input, select, textarea {
 			#main > section.two {
 				background-color: #f5fafa;
 				background-repeat: no-repeat;
-
+				text-justify: inter-word;
+				letter-spacing: -0.01em;
+				word-spacing: -0.025em;
 			}
 
 			#main > section.three {
 				background-color: #ecf1f1;
+				text-justify: inter-word;
+				letter-spacing: -0.01em;
+				word-spacing: -0.05em;
 			}
 
 			#main > section.four {
@@ -2338,6 +2343,9 @@ input, select, textarea {
 
 			#main > section.five {
 				background-color: #d9e4e2;
+				text-justify: inter-word;
+				letter-spacing: -0.01em;
+				word-spacing: -0.05em;
 			}
 
 /* Wide */
