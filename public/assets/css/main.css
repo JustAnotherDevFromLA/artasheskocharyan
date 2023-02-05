@@ -2295,7 +2295,7 @@ input, select, textarea {
 				}
 
 /* Main */
-
+	
 	#main {
 		margin-left: 375px;
 	}
@@ -2396,6 +2396,23 @@ input, select, textarea {
 			#main {
 				margin-left: 300px;
 			}
+			
+			#header {
+				width: 21%
+			}
+			
+			#profile {
+				position: relative;
+				margin: 1 0 0.5em 0;
+			}
+
+			#profile h1 {
+				font-size: 26px;
+			}
+
+			#profile p {
+				font-size: 18px;
+			}
 
 	}
 
@@ -2405,6 +2422,10 @@ input, select, textarea {
 
 		/* Main */
 
+			#main {
+				margin-left: 16%;
+			}
+
 			#main > section {
 				padding: 3em 0;
 			}
@@ -2413,11 +2434,40 @@ input, select, textarea {
 				padding: 5em 0;
 			}
 
+			#header {
+				width: 22%
+			}
+			
+			#profile {
+				position: relative;
+				margin: 1 0 0.5em 0;
+			}
+
+			#profile h1 {
+				font-size: 24px;
+			}
+
+			#profile p {
+				font-size: 18px;
+			}
+
+			/* Icons */
+
+			ul.icons li a {
+				font-size: x-large;
+			}
+			
+			/* Footer */
+
+			#footer {
+				margin-left: 16%;
+			}
+
 	}
 
 /* Narrow */
 
-	@media screen and (min-width: 961px) and (max-width: 1320px) {
+	@media screen and (min-width: 1101) and (max-width: 1320px) {
 
 		/* Basic */
 
@@ -2444,7 +2494,7 @@ input, select, textarea {
 		/* Header */
 
 			#header {
-				width: 24%
+				width: 24%;
 			}
 			
 			#profile {
@@ -2498,14 +2548,91 @@ input, select, textarea {
 			#main {
 				margin-left: 24%;
 			}
-
 	}
 
-/* Narrower */
+	@media screen and (min-width: 961px) and (max-width: 1100px) {
+		#main {
+			margin-left: 24%;
+		}
+		
+		/* Basic */
+		body, input, textarea, select {
+			font-size: 16pt;
+		}
 
-	#headerToggle {
-		display: none;
+		.container {
+			padding: 0 2em 0 2em;
+		}
+
+		/* Icons */
+		ul.icons li a {
+			width: normal;
+		}
+
+		/* Item */
+		.item {
+			margin-bottom: 20px;
+		}
+
+		/* Header */
+		#header {
+			width: 24%;
+		}
+		
+		#profile {
+			position: relative;
+			margin: 1 0 0 2;
+		}
+
+		#profile h1 {
+			font-size: 17px;
+			padding-top: 0.6em;
+			padding-left: 1.5em;
+		}
+
+		#profile p {
+			font-size: 13px;
+		}
+
+		#profile .image avi {
+			position: relative;
+			margin: 0 0 0.5em 0;
+		}
+
+		#nav ul li a {
+			font-size: 0.75em;
+			padding-top: 0.5em;
+			padding-bottom: 0.5em;
+		}
+
+			#nav ul li a span {
+				padding-right: 0.5em;
+			}
+
+				#nav ul li a span:before {
+					margin-left: 0em;
+					line-height: 2.25em;
+				}
+		
+		#ul.icons{
+			cursor: default;
+			font-size: small;
+		}
+			ul.icons a {
+				font-size: small;
+			}
+
+		/* Footer */
+		#footer {
+			margin-left: 24%;
+		}
 	}
+
+		/* Narrower */
+
+		#headerToggle {
+			display: none;
+		}
 
 	@media screen and (max-width: 960px) {
 
