@@ -1,0 +1,84 @@
+/* Modern carousel styles for portfolio section */
+.portfolio-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.portfolio-carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(.77,0,.18,1);
+}
+.portfolio-carousel-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 2em 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.portfolio-carousel-slide img {
+  max-width: 320px;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.portfolio-carousel-slide h3 {
+  margin: 0.5em 0 0.2em 0;
+  font-size: 1.3em;
+  color: #222;
+}
+.portfolio-carousel-slide p {
+  color: #555;
+  font-size: 1em;
+  text-align: center;
+}
+.portfolio-carousel-nav {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.portfolio-carousel-btn {
+  background: rgba(0,0,0,0.08);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
+  color: #333;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background 0.2s;
+}
+.portfolio-carousel-btn:hover {
+  background: rgba(0,0,0,0.18);
+}
+.portfolio-carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0 0 0;
+}
+.portfolio-carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.portfolio-carousel-dot.active {
+  background: #333;
+}
