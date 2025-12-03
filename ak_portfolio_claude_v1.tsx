@@ -42,7 +42,7 @@ const Portfolio = () => {
     {
       role: 'Founder',
       company: 'Testify Labs',
-      period: '2023 - Present',
+      period: 'September 2024 - Present',
       location: 'Burbank, CA',
       achievements: [
         'Founded QA consulting and testing solutions company',
@@ -54,7 +54,7 @@ const Portfolio = () => {
     {
       role: 'Software QA Engineer',
       company: 'Meta',
-      period: '2021 - 2023',
+      period: 'September 2022 - September 2024',
       location: 'Los Angeles, CA',
       achievements: [
         'Performed manual and automated testing for web and mobile applications',
@@ -65,9 +65,9 @@ const Portfolio = () => {
       ]
     },
     {
-      role: 'QA Engineer',
+      role: 'Software QA Engineer',
       company: 'Altruist',
-      period: '2020 - 2021',
+      period: 'August 2021 - December 2023',
       location: 'Los Angeles, CA',
       achievements: [
         'Implemented test automation scripts using Java, JavaScript, and Python',
@@ -547,7 +547,7 @@ const Portfolio = () => {
       <footer className={`py-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className={darkMode ? 'text-gray-500' : 'text-gray-600'}>
-            © 2024 Artashes Kocharyan. Built with Next.js, Tailwind CSS & Framer Motion
+            © 2025 Artashes Kocharyan. All rights reserved.
           </p>
         </div>
       </footer>
