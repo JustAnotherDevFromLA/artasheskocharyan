@@ -11,7 +11,6 @@ const Portfolio = () => {
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
-
   const [animatedCircleStyles, setAnimatedCircleStyles] = useState<any[]>([]);
 
   useEffect(() => {
@@ -43,9 +42,6 @@ const Portfolio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // ... (rest of the component)
-
-
   const skills = {
     languages: ['Java', 'JavaScript', 'Python', 'TypeScript', 'SQL'],
     frameworks: ['Selenium', 'TestNG', 'Cypress', 'Jest', 'Playwright'],
@@ -57,7 +53,7 @@ const Portfolio = () => {
     {
       role: 'Founder',
       company: 'Testify Labs',
-      period: '2023 - Present',
+      period: 'September 2024 - Present',
       location: 'Burbank, CA',
       achievements: [
         'Founded QA consulting and testing solutions company',
@@ -69,7 +65,7 @@ const Portfolio = () => {
     {
       role: 'Software QA Engineer',
       company: 'Meta',
-      period: '2021 - 2023',
+      period: 'September 2022 - September 2024',
       location: 'Los Angeles, CA',
       achievements: [
         'Performed manual and automated testing for web and mobile applications',
@@ -80,9 +76,9 @@ const Portfolio = () => {
       ]
     },
     {
-      role: 'QA Engineer',
+      role: 'Software QA Engineer',
       company: 'Altruist',
-      period: '2020 - 2021',
+      period: 'August 2021 - December 2023',
       location: 'Los Angeles, CA',
       achievements: [
         'Implemented test automation scripts using Java, JavaScript, and Python',
@@ -514,7 +510,7 @@ const Portfolio = () => {
                 whileHover={{ scale: 1.1, y: -5 }}
                 className={`p-4 rounded-xl ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
               >
-              <Linkedin size={24} />
+                <Linkedin size={24} />
               </motion.a>
               <motion.a
                 href="mailto:artashes@testifylabs.com"
@@ -559,7 +555,7 @@ const Portfolio = () => {
       <footer className={`py-8 border-t ${darkMode ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-6xl mx-auto px-6 text-center">
           <p className={darkMode ? 'text-gray-500' : 'text-gray-600'}>
-            © 2024 Artashes Kocharyan. Built with Next.js, Tailwind CSS & Framer Motion
+            © 2025 Artashes Kocharyan. All rights reserved.
           </p>
         </div>
       </footer>
