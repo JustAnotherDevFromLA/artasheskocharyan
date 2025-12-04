@@ -472,10 +472,10 @@ const Portfolio = () => {
                     <div className="flex items-start justify-between mb-4">
                       <Code className="text-cyan-400" size={32} />
                       <div className="flex gap-2">
-                        <a href={project.link} className="p-2 rounded-lg hover:bg-gray-700 transition-colors">
+                        <a href={project.link} className="p-2 rounded-lg hover:bg-gray-700 transition-colors" aria-label={`View live demo of ${project.title}`}>
                           <ExternalLink size={18} />
                         </a>
-                        <a href={project.github} className="p-2 rounded-lg hover:bg-gray-700 transition-colors">
+                        <a href={project.github} className="p-2 rounded-lg hover:bg-gray-700 transition-colors" aria-label={`View ${project.title} on GitHub`}>
                           <Github size={18} />
                         </a>
                       </div>
@@ -527,6 +527,7 @@ const Portfolio = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -5 }}
                 className={`p-4 rounded-xl ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
+                aria-label="GitHub Profile"
               >
                 <Github size={24} />
               </motion.a>
@@ -536,6 +537,7 @@ const Portfolio = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -5 }}
                 className={`p-4 rounded-xl ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
+                aria-label="LinkedIn Profile"
               >
                 <Linkedin size={24} />
               </motion.a>
@@ -543,6 +545,7 @@ const Portfolio = () => {
                 href="mailto:artashes@testifylabs.com"
                 whileHover={{ scale: 1.1, y: -5 }}
                 className={`p-4 rounded-xl ${darkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-gray-100 hover:bg-gray-200'} transition-colors`}
+                aria-label="Email Me"
               >
                 <Mail size={24} />
               </motion.a>
