@@ -12,6 +12,33 @@ const Portfolio = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.8]);
   const [animatedCircleStyles, setAnimatedCircleStyles] = useState<any[]>([]);
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    try {
+      const response = await fetch('https://formspree.io/f/mdkqdgaa', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        setFormStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormStatus('error');
+    }
+  };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -521,32 +548,48 @@ const Portfolio = () => {
               </motion.a>
             </div>
             
-            <div className={`p-8 rounded-2xl backdrop-blur-sm ${darkMode ? 'bg-gray-800/50 border border-gray-700' : 'bg-gray-100 border border-gray-200'}`}>
+            <form onSubmit={handleFormSubmit} className={`p-8 rounded-2xl backdrop-blur-sm ${darkMode ? 'bg-gray-800/50 border border-gray-700' : 'bg-gray-100 border border-gray-200'}`}>
               <div className="space-y-4">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleFormChange}
+                  required
                   className={`w-full px-4 py-3 rounded-lg ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} border focus:border-cyan-500 focus:outline-none transition-colors`}
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleFormChange}
+                  required
                   className={`w-full px-4 py-3 rounded-lg ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} border focus:border-cyan-500 focus:outline-none transition-colors`}
                 />
                 <textarea
+                  name="message"
                   placeholder="Your Message"
                   rows={5}
+                  value={formData.message}
+                  onChange={handleFormChange}
+                  required
                   className={`w-full px-4 py-3 rounded-lg ${darkMode ? 'bg-gray-700 border-gray-600' : 'bg-white border-gray-300'} border focus:border-cyan-500 focus:outline-none transition-colors resize-none`}
                 />
                 <motion.button
+                  type="submit"
+                  disabled={formStatus === 'submitting'}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
+                  className="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow disabled:opacity-50"
                 >
-                  Send Message
+                  {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
                 </motion.button>
+                {formStatus === 'success' && <p className="text-center text-green-500">Message sent successfully!</p>}
+                {formStatus === 'error' && <p className="text-center text-red-500">An error occurred. Please try again.</p>}
               </div>
-            </div>
+            </form>
           </motion.div>
         </div>
       </section>
