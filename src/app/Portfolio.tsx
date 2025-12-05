@@ -123,7 +123,7 @@ const Portfolio = () => {
       tags: ['Java', 'Selenium', 'TestNG', 'Maven'],
       category: 'automation',
       link: '#',
-      github: '#'
+      github: 'https://github.com/JustAnotherDevFromLA'
     },
     {
       title: 'TestRail Integration Suite',
@@ -131,7 +131,7 @@ const Portfolio = () => {
       tags: ['TestRail', 'Python', 'API Integration'],
       category: 'tools',
       link: '#',
-      github: '#'
+      github: 'https://github.com/JustAnotherDevFromLA'
     },
     {
       title: 'Mobile App Testing Framework',
@@ -139,7 +139,7 @@ const Portfolio = () => {
       tags: ['Python', 'Appium', 'JavaScript'],
       category: 'mobile',
       link: '#',
-      github: '#'
+      github: 'https://github.com/JustAnotherDevFromLA'
     },
     {
       title: 'Release Management Dashboard',
@@ -147,7 +147,7 @@ const Portfolio = () => {
       tags: ['React', 'Node.js', 'CI/CD'],
       category: 'tools',
       link: '#',
-      github: '#'
+      github: 'https://github.com/JustAnotherDevFromLA'
     },
     {
       title: 'Performance Testing Suite',
@@ -155,7 +155,7 @@ const Portfolio = () => {
       tags: ['JMeter', 'Python', 'Grafana'],
       category: 'automation',
       link: '#',
-      github: '#'
+      github: 'https://github.com/JustAnotherDevFromLA'
     },
     {
       title: 'API Testing Framework',
@@ -163,7 +163,7 @@ const Portfolio = () => {
       tags: ['JavaScript', 'Postman', 'Newman', 'Jenkins'],
       category: 'automation',
       link: '#',
-      github: '#'
+      github: 'https://github.com/JustAnotherDevFromLA'
     }
   ];
 
@@ -522,7 +522,7 @@ const Portfolio = () => {
             
             <div className="flex justify-center gap-6 mb-12">
               <motion.a
-                href="https://github.com/artasheskocharyan"
+                href="https://github.com/JustAnotherDevFromLA"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -5 }}
