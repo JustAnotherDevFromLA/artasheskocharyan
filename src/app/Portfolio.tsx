@@ -261,7 +261,7 @@ const Portfolio = () => {
             </p>
             
             <div className="flex flex-col items-center">
-              <div className="flex gap-4 justify-center flex-wrap">
+              <div className="flex w-full gap-4 justify-center flex-wrap">
                 <motion.a
                   href="#contact"
                   whileHover={{ scale: 1.05 }}
