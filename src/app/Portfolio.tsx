@@ -287,6 +287,7 @@ const Portfolio = () => {
               <ChevronDown className="text-cyan-400 mx-auto" size={32} />
             </motion.div>
           </motion.div>
+        </motion.div>
       </section>
 
       {/* About Section */}
