@@ -278,16 +278,15 @@ const Portfolio = () => {
                 View Work
               </motion.a>
             </div>
-          </motion.div>
 
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          >
-            <ChevronDown className="text-cyan-400" size={32} />
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="mt-12"
+            >
+              <ChevronDown className="text-cyan-400 mx-auto" size={32} />
+            </motion.div>
           </motion.div>
-        </motion.div>
       </section>
 
       {/* About Section */}
