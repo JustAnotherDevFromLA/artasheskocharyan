@@ -247,6 +247,7 @@ const Portfolio = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="relative"
           >
             <h1 className="text-6xl md:text-8xl font-bold mb-6">
               <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-blue-700 bg-clip-text text-transparent">
@@ -260,32 +261,34 @@ const Portfolio = () => {
               Building robust test automation frameworks and ensuring exceptional software quality through modern QA methodologies
             </p>
             
-            <div className="inline-flex gap-4 flex-wrap justify-center">
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
-              >
-                Get In Touch
-              </motion.a>
-              <motion.a
-                href="#projects"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className={`px-8 py-3 rounded-lg font-semibold border-2 ${darkMode ? 'border-gray-700 hover:border-cyan-500' : 'border-gray-300 hover:border-cyan-500'} transition-colors`}
-              >
-                View Work
-              </motion.a>
-            </div>
+            <div className="absolute left-1/2 -translate-x-1/2 w-full">
+              <div className="inline-flex gap-4 flex-wrap justify-center">
+                <motion.a
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
+                >
+                  Get In Touch
+                </motion.a>
+                <motion.a
+                  href="#projects"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`px-8 py-3 rounded-lg font-semibold border-2 ${darkMode ? 'border-gray-700 hover:border-cyan-500' : 'border-gray-300 hover:border-cyan-500'} transition-colors`}
+                >
+                  View Work
+                </motion.a>
+              </div>
 
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="mt-12"
-            >
-              <ChevronDown className="text-cyan-400 mx-auto" size={32} />
-            </motion.div>
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="mt-12"
+              >
+                <ChevronDown className="text-cyan-400 mx-auto" size={32} />
+              </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       </section>
