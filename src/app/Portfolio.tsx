@@ -241,7 +241,7 @@ const Portfolio = () => {
 
         <motion.div 
           style={{ opacity, scale }}
-          className="relative z-10 max-w-4xl mx-auto px-6 text-center"
+          className="relative z-10 max-w-4xl mx-auto px-6"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
