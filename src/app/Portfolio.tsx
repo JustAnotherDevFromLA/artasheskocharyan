@@ -260,34 +260,32 @@ const Portfolio = () => {
               Building robust test automation frameworks and ensuring exceptional software quality through modern QA methodologies
             </p>
             
-            <div className="flex flex-col items-center">
-              <div className="flex w-full gap-4 justify-center flex-wrap">
-                <motion.a
-                  href="#contact"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
-                >
-                  Get In Touch
-                </motion.a>
-                <motion.a
-                  href="#projects"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className={`px-8 py-3 rounded-lg font-semibold border-2 ${darkMode ? 'border-gray-700 hover:border-cyan-500' : 'border-gray-300 hover:border-cyan-500'} transition-colors`}
-                >
-                  View Work
-                </motion.a>
-              </div>
-
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="mt-12"
+            <div className="inline-flex gap-4 flex-wrap justify-center">
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-shadow"
               >
-                <ChevronDown className="text-cyan-400" size={32} />
-              </motion.div>
+                Get In Touch
+              </motion.a>
+              <motion.a
+                href="#projects"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-8 py-3 rounded-lg font-semibold border-2 ${darkMode ? 'border-gray-700 hover:border-cyan-500' : 'border-gray-300 hover:border-cyan-500'} transition-colors`}
+              >
+                View Work
+              </motion.a>
             </div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="mt-12"
+            >
+              <ChevronDown className="text-cyan-400 mx-auto" size={32} />
+            </motion.div>
           </motion.div>
         </motion.div>
       </section>
