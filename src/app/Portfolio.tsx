@@ -218,7 +218,7 @@ const Portfolio = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-blue-700/10" />
         <div className="absolute inset-0">
           {animatedCircleStyles.map((style, i) => (
@@ -241,7 +241,7 @@ const Portfolio = () => {
 
         <motion.div 
           style={{ opacity, scale }}
-          className="relative z-10 max-w-4xl mx-auto px-6"
+          className="relative z-10 max-w-4xl mx-auto px-6 text-center"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
