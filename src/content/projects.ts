@@ -13,7 +13,7 @@ export const projects: Project[] = [
     icon: 'rocket',
     span: 'lg:col-span-12',
     layout: 'wide',
-    status: 'Client work',
+    status: 'Consulting',
     description:
       'Advising teams through platform migrations and release cutovers — turning "we think it works" into a signed-off, monitored release.',
     details: [

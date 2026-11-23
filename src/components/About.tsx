@@ -10,7 +10,7 @@ export function About() {
       lede="Continuous learning, on and off the clock"
       description={`Based in ${site.location}.`}
     >
-      <div className="max-w-3xl space-y-5">
+      <div className="max-w-2xl space-y-5">
         {about.bio.map((paragraph) => (
           <p key={paragraph.slice(0, 24)} className="text-base leading-relaxed text-pretty text-muted">
             {paragraph}
@@ -18,7 +18,7 @@ export function About() {
         ))}
       </div>
 
-      <div className="mt-12 max-w-3xl border-t border-line/70 pt-8">
+      <div className="mt-12 max-w-2xl border-t border-line/70 pt-8">
         <h3 className="text-sm font-semibold tracking-tight text-ink">Where you'll find me</h3>
         <ul className="mt-4 space-y-2">
           {about.events.map((event) => (
@@ -30,7 +30,7 @@ export function About() {
         </ul>
       </div>
 
-      <div className="mt-10 max-w-3xl">
+      <div className="mt-10 max-w-2xl">
         <h3 className="text-sm font-semibold tracking-tight text-ink">Off-screen</h3>
         <ul className="mt-4 space-y-2">
           {about.offScreen.map((hobby) => (

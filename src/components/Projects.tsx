@@ -131,13 +131,13 @@ export function Projects() {
 
       <div className="mt-12 max-w-2xl">
         <h3 className="text-lg font-semibold tracking-tight text-ink">Side projects</h3>
-        <ul className="mt-4 space-y-3">
+        <ul className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2">
           {projects
             .filter((project) => project.emphasis === 'aside')
             .map((project) => (
-              <li key={project.id}>
+              <li key={project.id} className="rounded-tile border border-line bg-surface p-6">
                 <p className="text-sm font-semibold text-ink">{project.title}</p>
-                <p className="text-sm leading-relaxed text-pretty text-muted">{project.description}</p>
+                <p className="mt-2 text-sm leading-relaxed text-pretty text-muted">{project.description}</p>
               </li>
             ))}
         </ul>

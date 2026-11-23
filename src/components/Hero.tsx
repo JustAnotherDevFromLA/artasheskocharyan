@@ -21,7 +21,16 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={180}>
-          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-pretty text-muted">{site.intro}</p>
+          <div className="mt-7 max-w-2xl space-y-4">
+            {site.intro.split(/(?<=\.)\s+/).map((sentence, index) => (
+              <p
+                key={sentence.slice(0, 24)}
+                className={`text-lg leading-relaxed text-pretty text-muted ${index === 1 ? 'hidden sm:block' : ''}`}
+              >
+                {sentence}
+              </p>
+            ))}
+          </div>
         </Reveal>
 
         <Reveal delay={240}>
@@ -47,12 +56,12 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={300}>
-          <dl className="mt-16 hidden gap-px overflow-hidden rounded-tile border border-line bg-line sm:grid sm:grid-cols-3">
+          <dl className="mt-12 grid grid-cols-1 gap-px overflow-hidden rounded-tile border border-line bg-line sm:mt-16 sm:grid-cols-3">
             {site.highlights.map((item) => (
               <a
                 key={item.value}
                 href={`#role-${item.value.toLowerCase()}`}
-                className="bg-surface px-5 py-5 transition-colors hover:bg-elevated"
+                className="bg-surface px-5 py-5 underline decoration-ink/30 underline-offset-4 transition-colors hover:bg-elevated"
               >
                 <dt className="text-lg font-semibold tracking-tight text-ink">{item.value}</dt>
                 <dd className="mt-1 text-sm text-pretty text-faint">{item.label}</dd>

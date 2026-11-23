@@ -24,6 +24,7 @@ export const experience: ExperienceItem[] = [
     role: 'Central Reliability Support — Founding Member',
     period: 'Sep 2022 — Sep 2024',
     kind: 'role',
+    featured: true,
     summary: 'Helped stand up the Central Reliability Support team from its first cohort of engineers.',
     achievements: [
       'Reached 100% vendor-quality compliance, a top-ranked KPI, starting in Q3 2023.',
@@ -39,8 +40,7 @@ export const experience: ExperienceItem[] = [
     role: 'Software Quality Assurance Engineer',
     period: 'Sep 2021 — Dec 2023',
     kind: 'role',
-    featured: true,
-    summary: 'Owned quality for an internal tool the business relied on.',
+    summary: 'Owned quality for internal fintech software the business relied on.',
     achievements: [
       'Balanced exploratory manual passes with automated regression coverage to keep feedback fast.',
     ],

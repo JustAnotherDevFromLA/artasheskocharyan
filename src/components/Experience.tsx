@@ -34,9 +34,7 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
         </span>
         <span className="font-mono text-[11px] tracking-wide text-faint">{item.period}</span>
         {item.concurrentWith && (
-          <span className="font-mono text-[11px] tracking-wide text-accent">
-            Concurrent with {item.concurrentWith}
-          </span>
+          <span className="text-sm font-medium text-ink">Overlapped the {item.concurrentWith} role</span>
         )}
       </div>
 
@@ -51,12 +49,17 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
           item.organization
         )}
       </h3>
-      <p className="mt-1 text-sm font-medium text-pretty text-accent">{item.role}</p>
+      <p className="mt-1 text-sm font-medium text-pretty text-ink">{item.role}</p>
       <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">{item.summary}</p>
 
       <ul className="mt-5 space-y-2.5">
-        {item.achievements.map((achievement) => (
-          <li key={achievement} className="flex gap-3 text-sm leading-relaxed text-muted">
+        {item.achievements.map((achievement, index) => (
+          <li
+            key={achievement}
+            className={`flex gap-3 text-sm leading-relaxed ${
+              item.id === 'meta' && index === 0 ? 'font-semibold text-ink' : 'text-muted'
+            }`}
+          >
             <Icon name="check" className="mt-1 h-3.5 w-3.5 shrink-0 text-accent" />
             <span className="text-pretty">{achievement}</span>
           </li>

@@ -33,7 +33,7 @@ export function Nav() {
         }`}
       >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <a href="#top" className="group flex items-center gap-2.5">
+        <a href="#top" aria-label={site.shortName} className="group flex items-center gap-2.5">
           <span className="grid h-11 w-11 place-items-center rounded-lg bg-accent font-mono text-sm font-bold text-canvas">
             AK
           </span>
@@ -96,7 +96,10 @@ export function Nav() {
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setMenuOpen(false)}
-              className="flex min-h-11 items-center rounded-lg px-3 text-sm text-muted transition-colors hover:bg-elevated hover:text-ink"
+              aria-current={active === item.id ? 'true' : undefined}
+              className={`flex min-h-11 items-center rounded-lg px-3 text-sm transition-colors hover:bg-elevated hover:text-ink ${
+                active === item.id ? 'text-ink' : 'text-muted'
+              }`}
             >
               {item.label}
             </a>

@@ -5,7 +5,7 @@ import { Reveal } from './Reveal'
 import { Section } from './Section'
 
 const fieldClass =
-  'w-full rounded-xl border border-line bg-elevated/60 px-4 py-3 text-sm text-ink placeholder:text-faint transition-colors duration-200 hover:border-line-strong focus:border-accent focus:outline-none'
+  'w-full rounded-xl border border-line bg-elevated/60 px-4 py-3 text-base text-ink placeholder:text-faint transition-colors duration-200 hover:border-line-strong focus:border-accent'
 
 /**
  * Submits by composing a mailto: draft, so the form works with no backend.
@@ -102,7 +102,7 @@ export function Contact() {
             <a
               ref={emailRef}
               href={`mailto:${site.email}`}
-              className="mt-4 inline-flex items-center gap-2.5 text-base font-medium break-all text-ink transition-colors duration-200 hover:text-accent"
+              className="mt-4 inline-flex min-h-11 items-center gap-2.5 text-base font-medium break-all text-ink transition-colors duration-200 hover:text-accent"
             >
               <Icon name="mail" className="h-4 w-4 shrink-0 text-accent" />
               {site.email}
@@ -111,7 +111,7 @@ export function Contact() {
             <button
               type="button"
               onClick={copyEmail}
-              className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-line px-3.5 py-2 font-mono text-[11px] tracking-wide text-muted transition-colors duration-200 hover:border-accent/60 hover:text-accent"
+              className="mt-4 inline-flex min-h-11 w-fit items-center gap-2 rounded-full border border-line px-3.5 font-mono text-[11px] tracking-wide text-muted transition-colors duration-200 hover:border-accent/60 hover:text-accent"
             >
               <Icon name={copyState === 'copied' ? 'check' : 'copy'} className="h-3.5 w-3.5" />
               {copyState === 'copied' ? 'Copied' : 'Copy address'}
@@ -175,7 +175,7 @@ export function Contact() {
                   className={`mt-2 ${fieldClass} ${invalid.name ? 'border-accent' : ''}`}
                 />
                 {invalid.name && (
-                  <span id="draft-error-name" className="mt-2 block text-xs text-accent">
+                  <span id="draft-error-name" className="mt-2 block text-xs font-medium text-ink">
                     {fieldMessage('name', invalid.name)}
                   </span>
                 )}
@@ -193,7 +193,7 @@ export function Contact() {
                   className={`mt-2 ${fieldClass} ${invalid.email ? 'border-accent' : ''}`}
                 />
                 {invalid.email && (
-                  <span id="draft-error-email" className="mt-2 block text-xs text-accent">
+                  <span id="draft-error-email" className="mt-2 block text-xs font-medium text-ink">
                     {fieldMessage('email', invalid.email)}
                   </span>
                 )}
@@ -212,7 +212,7 @@ export function Contact() {
                 className={`mt-2 resize-y ${fieldClass} ${invalid.message ? 'border-accent' : ''}`}
               />
               {invalid.message && (
-                <span id="draft-error-message" className="mt-2 block text-xs text-accent">
+                <span id="draft-error-message" className="mt-2 block text-xs font-medium text-ink">
                   {fieldMessage('message', invalid.message)}
                 </span>
               )}
