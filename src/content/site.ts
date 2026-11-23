@@ -7,7 +7,7 @@ export const site: SiteContent = {
   intro:
     'I automate software quality assurance using custom workflows, CI/CD integration, and live monitoring. My methodology focuses on risk-based automated test suites, efficient release protocols, alerts, and AI-driven remediation. Based in Los Angeles.',
   location: 'Los Angeles, CA',
-  availability: 'Open to consulting engagements',
+  availability: null,
   email: 'artashesalexkocharyan@gmail.com',
   nav: [
     { label: 'Experience', id: 'experience' },
@@ -22,7 +22,7 @@ export const site: SiteContent = {
   ],
   highlights: [
     { value: 'Testify', label: 'AI testing startup, founder' },
-    { value: 'Meta', label: 'Founding CRS team member' },
+    { value: 'Meta', label: 'Founding member, Central Reliability Support' },
     { value: 'Altruist', label: 'Software quality assurance engineer' },
   ],
 }

@@ -34,20 +34,20 @@ export function Nav() {
       >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <a href="#top" className="group flex items-center gap-2.5">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent font-mono text-sm font-bold text-canvas">
+          <span className="grid h-11 w-11 place-items-center rounded-lg bg-accent font-mono text-sm font-bold text-canvas">
             AK
           </span>
           <span className="hidden text-sm font-medium tracking-tight text-ink sm:block">{site.shortName}</span>
         </a>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-3">
           <nav aria-label="Sections" className="hidden items-center gap-1 md:flex">
             {site.nav.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
                 aria-current={active === item.id ? 'true' : undefined}
-                className={`rounded-full px-3.5 py-2 text-sm transition-colors duration-200 hover:text-ink ${
+                className={`inline-flex min-h-11 items-center rounded-full px-3.5 text-sm transition-colors duration-200 hover:text-ink ${
                   active === item.id ? 'text-ink' : 'text-muted'
                 }`}
               >
@@ -67,7 +67,7 @@ export function Nav() {
             type="button"
             onClick={toggleTheme}
             aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
-            className="grid h-9 w-9 place-items-center rounded-full border border-line text-muted transition-colors duration-200 hover:border-accent/60 hover:text-accent"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition-colors duration-200 hover:border-accent/60 hover:text-accent"
           >
             <Icon name={theme === 'dark' ? 'sun' : 'moon'} className="h-4 w-4" />
           </button>
@@ -78,7 +78,7 @@ export function Nav() {
             aria-expanded={menuOpen}
             aria-controls="mobile-nav"
             aria-label="Toggle navigation menu"
-            className="grid h-9 w-9 place-items-center rounded-full border border-line text-muted transition-colors duration-200 hover:text-ink md:hidden"
+            className="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition-colors duration-200 hover:text-ink md:hidden"
           >
             <Icon name={menuOpen ? 'close' : 'menu'} className="h-4 w-4" />
           </button>
@@ -96,7 +96,7 @@ export function Nav() {
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setMenuOpen(false)}
-              className="block rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-elevated hover:text-ink"
+              className="flex min-h-11 items-center rounded-lg px-3 text-sm text-muted transition-colors hover:bg-elevated hover:text-ink"
             >
               {item.label}
             </a>

@@ -1,4 +1,4 @@
-import { projects, skillGroups } from '../content/projects'
+import { projects } from '../content/projects'
 import type { Project } from '../content/types'
 import { Icon } from './Icon'
 import { Reveal } from './Reveal'
@@ -66,9 +66,6 @@ const tileClass =
 const linkedTileClass =
   'group relative overflow-hidden rounded-tile border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_24px_60px_-32px_var(--color-accent)] sm:p-7'
 
-const quietTileClass =
-  'relative overflow-hidden rounded-tile border border-line bg-surface/60 p-6 sm:p-7'
-
 function HoverGlow() {
   return (
     <div
@@ -78,17 +75,17 @@ function HoverGlow() {
   )
 }
 
-function ProjectTile({ project, quiet = false }: { project: Project; quiet?: boolean }) {
+function ProjectTile({ project }: { project: Project }) {
   const Container = project.href ? 'a' : 'div'
   const linkProps = project.href ? { href: project.href, target: '_blank', rel: 'noreferrer' } : {}
-  const frame = quiet ? quietTileClass : project.href ? linkedTileClass : tileClass
+  const frame = project.href ? linkedTileClass : tileClass
 
   // A full-width tile splits into summary + details columns so it fills its
   // width instead of stretching one narrow column of text.
   if (project.layout === 'wide') {
     return (
       <Container {...linkProps} data-project={project.id} className={`${frame} block h-full`}>
-        {!quiet && project.href && <HoverGlow />}
+        {project.href && <HoverGlow />}
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <TileHeader project={project} />
@@ -106,7 +103,7 @@ function ProjectTile({ project, quiet = false }: { project: Project; quiet?: boo
 
   return (
     <Container {...linkProps} data-project={project.id} className={`${frame} flex h-full flex-col`}>
-      {!quiet && project.href && <HoverGlow />}
+      {project.href && <HoverGlow />}
       <TileHeader project={project} />
       <TileHeading project={project} />
       <TileDetails details={project.details} className="mt-5 space-y-2 border-t border-line/70 pt-5" />
@@ -120,7 +117,7 @@ export function Projects() {
     <Section
       id="projects"
       title="Projects"
-      lede="Work a hiring manager can check against the roles above."
+      lede="A migration and release engagement: measurable sign-off, regression coverage, and monitoring after the cutover."
     >
       <div className="grid grid-cols-1 gap-5">
         {projects
@@ -132,40 +129,18 @@ export function Projects() {
           ))}
       </div>
 
-      <div className="mt-14">
-        <h3 className="text-lg font-semibold tracking-tight text-ink">Also running</h3>
-        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
+      <div className="mt-12 max-w-2xl">
+        <h3 className="text-lg font-semibold tracking-tight text-ink">Side projects</h3>
+        <ul className="mt-4 space-y-3">
           {projects
             .filter((project) => project.emphasis === 'aside')
             .map((project) => (
-              <ProjectTile key={project.id} project={project} quiet />
+              <li key={project.id}>
+                <p className="text-sm font-semibold text-ink">{project.title}</p>
+                <p className="text-sm leading-relaxed text-pretty text-muted">{project.description}</p>
+              </li>
             ))}
-        </div>
-      </div>
-
-      <div className="mt-16">
-        <Reveal>
-          <h3 className="font-mono text-xs tracking-[0.2em] text-faint uppercase">Toolbox</h3>
-        </Reveal>
-        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {skillGroups.map((group, index) => (
-            <Reveal key={group.id} delay={index * 60}>
-              <div className="h-full rounded-tile border border-line bg-surface/60 p-5 transition-colors duration-300 hover:border-line-strong">
-                <div className="flex items-center gap-2.5">
-                  <Icon name={group.icon} className="h-4 w-4 text-accent" />
-                  <h4 className="text-sm font-semibold tracking-tight text-ink">{group.title}</h4>
-                </div>
-                <ul className="mt-4 space-y-1.5">
-                  {group.skills.map((skill) => (
-                    <li key={skill} className="font-mono text-[12px] leading-relaxed text-muted">
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        </ul>
       </div>
     </Section>
   )

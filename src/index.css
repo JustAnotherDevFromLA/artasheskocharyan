@@ -62,7 +62,7 @@ html.light {
 html {
   scroll-behavior: smooth;
   /* Keeps sticky-nav-anchored sections from hiding their headings. */
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 5rem;
   background-color: var(--color-canvas);
 }
 
@@ -76,7 +76,7 @@ body {
 
 ::selection {
   background-color: var(--color-accent);
-  color: #0a0b0d;
+  color: var(--color-canvas);
 }
 
 :focus-visible {

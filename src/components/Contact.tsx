@@ -19,9 +19,20 @@ function submitByEmail(payload: { name: string; email: string; message: string }
 }
 
 type CopyState = 'idle' | 'copied' | 'failed'
+type FieldName = 'name' | 'email' | 'message'
+type FieldIssue = 'empty' | 'format'
+type FieldIssues = Partial<Record<FieldName, FieldIssue>>
+
+function fieldMessage(field: FieldName, issue: FieldIssue) {
+  if (field === 'name') return 'Add your name so the draft is addressed.'
+  if (field === 'message') return 'Add a note for the draft.'
+  if (issue === 'format') return 'That email address needs a name and a domain, like jane@company.com.'
+  return 'Add an email address so a reply has somewhere to go.'
+}
 
 export function Contact() {
   const [copyState, setCopyState] = useState<CopyState>('idle')
+  const [invalid, setInvalid] = useState<FieldIssues>({})
   const copiedTimer = useRef<number | undefined>(undefined)
   const emailRef = useRef<HTMLAnchorElement>(null)
 
@@ -31,12 +42,29 @@ export function Contact() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    submitByEmail({
-      name: String(data.get('name') ?? ''),
-      email: String(data.get('email') ?? ''),
-      message: String(data.get('message') ?? ''),
-    })
+    const form = event.currentTarget
+    const data = new FormData(form)
+    const name = String(data.get('name') ?? '').trim()
+    const email = String(data.get('email') ?? '').trim()
+    const message = String(data.get('message') ?? '').trim()
+    const emailField = form.elements.namedItem('email')
+    const emailValid = emailField instanceof HTMLInputElement && emailField.validity.valid
+
+    const issues: FieldIssues = {}
+    if (!name) issues.name = 'empty'
+    if (!email) issues.email = 'empty'
+    else if (!emailValid) issues.email = 'format'
+    if (!message) issues.message = 'empty'
+    setInvalid(issues)
+
+    const first = (['name', 'email', 'message'] as const).find((field) => issues[field])
+    if (first) {
+      const field = form.elements.namedItem(first)
+      if (field instanceof HTMLElement) field.focus()
+      return
+    }
+
+    submitByEmail({ name, email, message })
   }
 
   function selectEmail() {
@@ -65,12 +93,12 @@ export function Contact() {
     <Section
       id="contact"
       title="Contact"
-      lede="Email is the reliable way to reach me. The form only opens a draft. You send it."
+      lede="Email reaches me directly. The form only opens a draft, and you send it."
     >
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
-        <Reveal className="lg:col-span-5">
+        <Reveal className="lg:col-span-7">
           <div className="flex h-full flex-col rounded-tile border border-line bg-surface p-6 sm:p-8">
-            <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Direct</h3>
+            <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Email</h3>
             <a
               ref={emailRef}
               href={`mailto:${site.email}`}
@@ -93,7 +121,7 @@ export function Contact() {
             </p>
 
             <div className="mt-8 border-t border-line/70 pt-6">
-              <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Elsewhere</h3>
+              <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Profiles</h3>
               <ul className="mt-4 space-y-2">
                 {site.socials.map((social) => (
                   <li key={social.label}>
@@ -103,14 +131,16 @@ export function Contact() {
                       rel="noreferrer"
                       className="group flex items-center justify-between gap-3 rounded-xl border border-line bg-elevated/40 px-4 py-3 transition-colors duration-200 hover:border-accent/40"
                     >
-                      <span className="flex items-center gap-3">
-                        <Icon name={social.icon} className="h-4 w-4 text-muted transition-colors group-hover:text-accent" />
-                        <span className="text-sm text-ink">{social.label}</span>
+                      <span className="flex min-w-0 items-center gap-3">
+                        <Icon name={social.icon} className="h-4 w-4 shrink-0 text-muted transition-colors group-hover:text-accent" />
+                        <span className="min-w-0">
+                          <span className="block text-sm text-ink">{social.label}</span>
+                          {social.handle && (
+                            <span className="block font-mono text-[11px] text-faint">{social.handle}</span>
+                          )}
+                        </span>
                       </span>
                       <span className="flex items-center gap-2">
-                        {social.handle && (
-                          <span className="hidden font-mono text-[11px] text-faint sm:inline">{social.handle}</span>
-                        )}
                         <Icon
                           name="arrow"
                           className="h-3.5 w-3.5 text-faint transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-accent"
@@ -124,17 +154,31 @@ export function Contact() {
           </div>
         </Reveal>
 
-        <Reveal delay={100} className="lg:col-span-7">
+        <Reveal delay={100} className="lg:col-span-5">
           <form
+            noValidate
             onSubmit={handleSubmit}
             className="flex h-full flex-col rounded-tile border border-line bg-surface p-6 sm:p-8"
           >
-            <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Send a message</h3>
+            <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Open a draft</h3>
 
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <label className="block">
                 <span className="text-xs font-medium text-muted">Name</span>
-                <input required name="name" autoComplete="name" placeholder="Jane Doe" className={`mt-2 ${fieldClass}`} />
+                <input
+                  required
+                  name="name"
+                  autoComplete="name"
+                  placeholder="Jane Doe"
+                  aria-invalid={Boolean(invalid.name)}
+                  aria-describedby={invalid.name ? 'draft-error-name' : undefined}
+                  className={`mt-2 ${fieldClass} ${invalid.name ? 'border-accent' : ''}`}
+                />
+                {invalid.name && (
+                  <span id="draft-error-name" className="mt-2 block text-xs text-accent">
+                    {fieldMessage('name', invalid.name)}
+                  </span>
+                )}
               </label>
               <label className="block">
                 <span className="text-xs font-medium text-muted">Email</span>
@@ -144,8 +188,15 @@ export function Contact() {
                   name="email"
                   autoComplete="email"
                   placeholder="jane@company.com"
-                  className={`mt-2 ${fieldClass}`}
+                  aria-invalid={Boolean(invalid.email)}
+                  aria-describedby={invalid.email ? 'draft-error-email' : undefined}
+                  className={`mt-2 ${fieldClass} ${invalid.email ? 'border-accent' : ''}`}
                 />
+                {invalid.email && (
+                  <span id="draft-error-email" className="mt-2 block text-xs text-accent">
+                    {fieldMessage('email', invalid.email)}
+                  </span>
+                )}
               </label>
             </div>
 
@@ -156,8 +207,15 @@ export function Contact() {
                 name="message"
                 rows={6}
                 placeholder="A role, a question, or a note"
-                className={`mt-2 resize-y ${fieldClass}`}
+                aria-invalid={Boolean(invalid.message)}
+                aria-describedby={invalid.message ? 'draft-error-message' : undefined}
+                className={`mt-2 resize-y ${fieldClass} ${invalid.message ? 'border-accent' : ''}`}
               />
+              {invalid.message && (
+                <span id="draft-error-message" className="mt-2 block text-xs text-accent">
+                  {fieldMessage('message', invalid.message)}
+                </span>
+              )}
             </label>
 
             <div className="mt-6 flex flex-wrap items-center gap-4">

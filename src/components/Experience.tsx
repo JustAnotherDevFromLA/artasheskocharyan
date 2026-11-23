@@ -1,4 +1,5 @@
 import { experience } from '../content/experience'
+import { site } from '../content/site'
 import type { ExperienceItem, ExperienceKind } from '../content/types'
 import { Icon, type IconName } from './Icon'
 import { Reveal } from './Reveal'
@@ -6,7 +7,7 @@ import { Section, Tag } from './Section'
 
 const kindMeta: Record<ExperienceKind, { label: string; icon: IconName }> = {
   venture: { label: 'Venture', icon: 'spark' },
-  role: { label: 'Professional', icon: 'building' },
+  role: { label: 'Employment', icon: 'building' },
   community: { label: 'Community', icon: 'users' },
 }
 
@@ -15,7 +16,8 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
 
   return (
     <article
-      className={`group relative rounded-tile border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 sm:p-7 ${
+      id={`role-${item.id}`}
+      className={`scroll-mt-24 group relative rounded-tile border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 sm:p-7 ${
         item.featured
           ? 'border-accent/40 hover:border-accent hover:shadow-[0_20px_50px_-24px_var(--color-accent)]'
           : 'border-line hover:border-line-strong hover:shadow-[0_20px_50px_-30px_rgba(0,0,0,0.7)]'
@@ -49,14 +51,14 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
           item.organization
         )}
       </h3>
-      <p className="mt-1 text-sm font-medium text-accent">{item.role}</p>
-      <p className="mt-3 text-sm leading-relaxed text-muted">{item.summary}</p>
+      <p className="mt-1 text-sm font-medium text-pretty text-accent">{item.role}</p>
+      <p className="mt-3 text-sm leading-relaxed text-pretty text-muted">{item.summary}</p>
 
       <ul className="mt-5 space-y-2.5">
         {item.achievements.map((achievement) => (
           <li key={achievement} className="flex gap-3 text-sm leading-relaxed text-muted">
             <Icon name="check" className="mt-1 h-3.5 w-3.5 shrink-0 text-accent" />
-            <span>{achievement}</span>
+            <span className="text-pretty">{achievement}</span>
           </li>
         ))}
       </ul>
@@ -71,11 +73,14 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
 }
 
 export function Experience() {
+  const profile = site.socials.find((social) => social.label === 'LinkedIn')
+
   return (
     <Section
       id="experience"
       title="Experience"
       lede="Founder of Testify, founding member of Meta's Central Reliability Support team, and QA at Altruist."
+      action={profile ? { href: profile.href, label: 'LinkedIn profile' } : undefined}
     >
       <div className="relative">
         <span

@@ -15,9 +15,6 @@ export function Hero() {
             </span>
             <span className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-sm font-normal tracking-normal text-muted sm:text-base">
               <span className="text-accent">Software Quality Assurance Engineer</span>
-              <span aria-hidden="true" className="text-line-strong">
-                /
-              </span>
               <span>Test Automation Expert</span>
             </span>
           </h1>
@@ -47,16 +44,19 @@ export function Hero() {
               <Icon name="arrow" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
             </a>
           </div>
-          {site.availability && <p className="mt-4 text-sm text-muted">{site.availability}</p>}
         </Reveal>
 
         <Reveal delay={300}>
-          <dl className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-tile border border-line bg-line sm:grid-cols-3">
+          <dl className="mt-16 hidden gap-px overflow-hidden rounded-tile border border-line bg-line sm:grid sm:grid-cols-3">
             {site.highlights.map((item) => (
-              <div key={item.value} className="bg-surface px-5 py-5">
+              <a
+                key={item.value}
+                href={`#role-${item.value.toLowerCase()}`}
+                className="bg-surface px-5 py-5 transition-colors hover:bg-elevated"
+              >
                 <dt className="text-lg font-semibold tracking-tight text-ink">{item.value}</dt>
-                <dd className="mt-1 text-sm text-faint">{item.label}</dd>
-              </div>
+                <dd className="mt-1 text-sm text-pretty text-faint">{item.label}</dd>
+              </a>
             ))}
           </dl>
         </Reveal>

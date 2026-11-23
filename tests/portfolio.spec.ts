@@ -177,8 +177,7 @@ test.describe('interactions', () => {
     await expect(draftNote).toBeVisible()
     await form.getByRole('button', { name: 'Open email draft' }).click()
 
-    const nameField = form.getByLabel('Name')
-    expect(await nameField.evaluate((node: HTMLInputElement) => node.checkValidity())).toBe(false)
+    await expect(page.getByText('Add your name so the draft is addressed.')).toBeVisible()
     await expect(page.getByText('Draft opened in your email client')).toHaveCount(0)
 
     await nameField.fill('Jane Doe')
