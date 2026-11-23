@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0a0b0d" />
+    <title>Artashes Alex Kocharyan — Software Quality Assurance Engineer</title>
+    <meta
+      name="description"
+      content="Artashes Alex Kocharyan — Software Quality Assurance Engineer and test automation expert. Founder of Testify, founding member of Meta's Central Reliability Support team, OWASP LA volunteer."
+    />
+    <link rel="canonical" href="https://artasheskocharyan.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Artashes Alex Kocharyan — Software Quality Assurance Engineer" />
+    <meta
+      property="og:description"
+      content="Test automation, release quality, and AI-assisted testing. Founder of Testify."
+    />
+    <meta property="og:url" content="https://artasheskocharyan.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // Applied before paint so the stored theme never flashes the wrong palette.
+      try {
+        const stored = localStorage.getItem('theme')
+        document.documentElement.classList.toggle('light', stored === 'light')
+        document.documentElement.classList.toggle('dark', stored !== 'light')
+      } catch {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

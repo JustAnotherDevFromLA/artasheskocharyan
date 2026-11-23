@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+
+/* Self-hosted latin-only variable fonts: two requests, no third-party
+   connection, and no layout shift on a cold cache. */
+@font-face {
+  font-family: 'Inter Variable';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('./assets/fonts/inter-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono Variable';
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url('./assets/fonts/jetbrains-mono-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SFMono-Regular', monospace;
+
+  --color-canvas: #0a0b0d;
+  --color-surface: #101216;
+  --color-elevated: #15181e;
+  --color-line: #23262e;
+  --color-line-strong: #32363f;
+  --color-ink: #f2f4f7;
+  --color-muted: #9ba1ad;
+  /* Every text token clears 4.5:1 against canvas and surface — the mono
+     labels are small, so AA is the floor, not a nice-to-have. */
+  --color-faint: #808795;
+  --color-accent: #ff7a18;
+  --color-accent-soft: #ffab6b;
+  --color-accent-dim: #7a3708;
+
+  --radius-tile: 1.25rem;
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.light {
+  --color-canvas: #f7f7f8;
+  --color-surface: #ffffff;
+  --color-elevated: #ffffff;
+  --color-line: #e3e4e8;
+  --color-line-strong: #cfd1d8;
+  --color-ink: #14161a;
+  --color-muted: #565b66;
+  --color-faint: #6a7080;
+  --color-accent: #c24a00;
+  --color-accent-soft: #a03e00;
+  --color-accent-dim: #ffd9bd;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps sticky-nav-anchored sections from hiding their headings. */
+  scroll-padding-top: 5.5rem;
+  background-color: var(--color-canvas);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: #0a0b0d;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Scroll-triggered entrance used by <Reveal>. Elements are visible by default
+   so content still renders if JS or IntersectionObserver is unavailable. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal='pending'] {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  [data-reveal] {
+    transition:
+      opacity 0.6s var(--ease-out-soft),
+      transform 0.6s var(--ease-out-soft);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@utility grid-glow {
+  background-image:
+    radial-gradient(60rem 30rem at 50% -12rem, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 70%),
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size:
+    100% 100%,
+    72px 72px,
+    72px 72px;
+  mask-image: radial-gradient(70% 60% at 50% 0%, #000 20%, transparent 100%);
+}
