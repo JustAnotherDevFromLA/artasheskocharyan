@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { site } from '../content/site'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useTheme } from '../hooks/useTheme'
@@ -7,24 +7,31 @@ import { Icon } from './Icon'
 const navIds = site.nav.map((item) => item.id)
 
 export function Nav() {
+  const sentinel = useRef<HTMLDivElement>(null)
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const active = useActiveSection(navIds)
   const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const node = sentinel.current
+    if (!node || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setScrolled(!entry.isIntersecting)
+    })
+    observer.observe(node)
+    return () => observer.disconnect()
   }, [])
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled ? 'border-line/80 bg-canvas/80 backdrop-blur-xl' : 'border-transparent bg-transparent'
-      }`}
-    >
+    <>
+      <div ref={sentinel} aria-hidden="true" className="pointer-events-none absolute top-6 h-px w-px" />
+      <header
+        className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
+          scrolled ? 'border-line/80 bg-canvas/90 backdrop-blur-sm' : 'border-transparent bg-transparent'
+        }`}
+      >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <a href="#top" className="group flex items-center gap-2.5">
           <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent font-mono text-sm font-bold text-canvas">
@@ -82,7 +89,7 @@ export function Nav() {
         <nav
           id="mobile-nav"
           aria-label="Sections"
-          className="border-t border-line bg-canvas/95 px-5 py-3 backdrop-blur-xl md:hidden"
+          className="border-t border-line bg-canvas/95 px-5 py-3 md:hidden"
         >
           {site.nav.map((item) => (
             <a
@@ -96,6 +103,7 @@ export function Nav() {
           ))}
         </nav>
       )}
-    </header>
+      </header>
+    </>
   )
 }
