@@ -72,11 +72,7 @@ Design tokens are defined once in `src/index.css` under `@theme`, with light-mod
 
 ## First-run checklist
 
-Placeholders to replace with real values:
-
-- `src/content/site.ts` — `email` and the three social URLs/handles (marked with a `TODO`).
-- `index.html` — `og:` / `canonical` URLs if the domain changes.
-- `public/sitemap.xml` — same domain reference.
+Email and social links in `src/content/site.ts` are the handles from the previous site. If the domain changes, update the canonical and Open Graph URLs in `index.html` and the loc in `public/sitemap.xml`.
 
 ## Structure
 

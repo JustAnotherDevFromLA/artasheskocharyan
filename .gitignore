@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Firebase
+.firebase/
+
 # Playwright
 test-results
 playwright-report

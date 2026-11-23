@@ -8,10 +8,44 @@ type RevealProps = {
   as?: ElementType
 }
 
+const revealCallbacks = new Map<Element, () => void>()
+let revealObserver: IntersectionObserver | null = null
+
+function getRevealObserver() {
+  if (!revealObserver) {
+    revealObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          const show = revealCallbacks.get(entry.target)
+          if (!show) continue
+          revealCallbacks.delete(entry.target)
+          revealObserver?.unobserve(entry.target)
+          show()
+        }
+        if (revealCallbacks.size === 0) {
+          revealObserver?.disconnect()
+          revealObserver = null
+        }
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.05 },
+    )
+  }
+  return revealObserver
+}
+
+function unobserveReveal(node: Element) {
+  revealCallbacks.delete(node)
+  revealObserver?.unobserve(node)
+  if (revealCallbacks.size === 0 && revealObserver) {
+    revealObserver.disconnect()
+    revealObserver = null
+  }
+}
+
 /**
  * Fades and lifts its children into view once, on first intersection.
- * Uses a single IntersectionObserver per instance instead of a scroll
- * listener or animation library, so it costs nothing on the main thread.
+ * Every instance shares one IntersectionObserver.
  */
 export function Reveal({ children, delay = 0, className, as: Tag = 'div' }: RevealProps) {
   const ref = useRef<HTMLElement>(null)
@@ -24,20 +58,9 @@ export function Reveal({ children, delay = 0, className, as: Tag = 'div' }: Reve
       return
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setVisible(true)
-            observer.disconnect()
-          }
-        }
-      },
-      { rootMargin: '0px 0px -12% 0px', threshold: 0.05 },
-    )
-
-    observer.observe(node)
-    return () => observer.disconnect()
+    revealCallbacks.set(node, () => setVisible(true))
+    getRevealObserver().observe(node)
+    return () => unobserveReveal(node)
   }, [])
 
   return (
