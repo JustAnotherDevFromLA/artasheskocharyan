@@ -6,17 +6,27 @@ test.describe('page content', () => {
   test('renders the hero identity and both calls to action', async ({ page }) => {
     await page.goto('/')
 
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Artashes Alex Kocharyan')
-    await expect(page.getByRole('link', { name: 'View Projects' })).toBeVisible()
-    await expect(page.getByRole('link', { name: 'Contact Me' })).toBeVisible()
+    const heading = page.getByRole('heading', { level: 1 })
+    await expect(heading).toContainText('Artashes Alex Kocharyan')
+    await expect(heading).toContainText('Software Quality Assurance Engineer')
+    await expect(heading).toContainText('Test Automation Expert')
+    await expect(page.getByRole('link', { name: 'Review experience' })).toBeVisible()
+    await expect(page.getByRole('link', { name: 'Get in touch' })).toBeVisible()
   })
 
   test('renders every section with a heading', async ({ page }) => {
     await page.goto('/')
 
+    const headings: Record<(typeof sections)[number], string> = {
+      experience: 'Experience',
+      projects: 'Projects',
+      about: 'About',
+      contact: 'Contact',
+    }
+
     for (const id of sections) {
       await expect(page.locator(`#${id}`)).toBeAttached()
-      await expect(page.locator(`#${id} h2`)).toHaveCount(1)
+      await expect(page.locator(`#${id} h2`)).toHaveText(headings[id])
     }
   })
 
@@ -99,25 +109,24 @@ test.describe('interactions', () => {
   test('hero actions scroll to their target sections', async ({ page }) => {
     await page.goto('/')
 
-    await page.getByRole('link', { name: 'View Projects' }).click()
-    await expect(page.locator('#projects')).toBeInViewport({ timeout: 5000 })
+    await page.getByRole('link', { name: 'Review experience' }).click()
+    await expect(page.locator('#experience')).toBeInViewport({ timeout: 5000 })
 
-    await page.getByRole('link', { name: 'Contact Me' }).click()
+    await page.getByRole('link', { name: 'Get in touch' }).click()
     await expect(page.locator('#contact')).toBeInViewport({ timeout: 5000 })
   })
 
-  test('project tiles lift and take the accent border on hover', async ({ page, isMobile }) => {
+  test('a project tile without a destination stays flat on hover', async ({ page, isMobile }) => {
     test.skip(!!isMobile, 'hover styles are gated behind (hover: hover)')
     await page.goto('/')
 
     const target = page.locator('[data-project="migration-release-strategy"]')
     await target.scrollIntoViewIfNeeded()
 
-    // Tailwind 4 lifts elements with the `translate` property, not `transform`.
     const readState = () =>
       target.evaluate((node) => {
         const style = getComputedStyle(node)
-        return { translate: style.translate, borderColor: style.borderColor }
+        return { translate: style.translate, tag: node.tagName }
       })
 
     const before = await readState()
@@ -125,9 +134,9 @@ test.describe('interactions', () => {
     await page.waitForTimeout(400)
     const after = await readState()
 
+    expect(before.tag).toBe('DIV')
     expect(before.translate).toBe('none')
-    expect(after.translate).not.toBe('none')
-    expect(after.borderColor).not.toBe(before.borderColor)
+    expect(after.translate).toBe('none')
   })
 
   test('nav highlight follows the visible section and clears at the top', async ({ page, isMobile }) => {
@@ -137,7 +146,7 @@ test.describe('interactions', () => {
     const current = page.locator('header nav a[aria-current="true"]')
     await expect(current).toHaveCount(0)
 
-    await page.getByRole('link', { name: 'View Projects' }).click()
+    await page.getByRole('navigation', { name: 'Sections' }).getByRole('link', { name: 'Projects' }).click()
     await expect(current).toHaveText('Projects')
 
     await page.locator('#top').scrollIntoViewIfNeeded()
@@ -160,22 +169,25 @@ test.describe('interactions', () => {
     await expect(page.locator('html')).toHaveClass(/dark/)
   })
 
-  test('contact form blocks empty submission and reports a drafted email', async ({ page }) => {
+  test('contact form blocks empty submission and does not claim a draft opened', async ({ page }) => {
     await page.goto('/')
 
     const form = page.locator('#contact form')
-    await form.getByRole('button', { name: 'Send message' }).click()
+    const draftNote = page.getByText('Opens a draft in your email app.')
+    await expect(draftNote).toBeVisible()
+    await form.getByRole('button', { name: 'Open email draft' }).click()
 
     const nameField = form.getByLabel('Name')
     expect(await nameField.evaluate((node: HTMLInputElement) => node.checkValidity())).toBe(false)
-    await expect(page.getByText('Draft opened in your email client')).toBeHidden()
+    await expect(page.getByText('Draft opened in your email client')).toHaveCount(0)
 
     await nameField.fill('Jane Doe')
     await form.getByLabel('Email').fill('jane@company.com')
     await form.getByLabel('Message').fill('Interested in a regression suite audit.')
-    await form.getByRole('button', { name: 'Send message' }).click()
+    await form.getByRole('button', { name: 'Open email draft' }).click()
 
-    await expect(page.getByText('Draft opened in your email client')).toBeVisible()
+    await expect(draftNote).toBeVisible()
+    await expect(page.getByText('Draft opened in your email client')).toHaveCount(0)
   })
 })
 

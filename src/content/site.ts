@@ -1,15 +1,14 @@
 import type { SiteContent } from './types'
 
-// TODO: replace the email + social URLs below with your real handles.
 export const site: SiteContent = {
   name: 'Artashes Alex Kocharyan',
   shortName: 'Artashes Kocharyan',
   tagline: 'Software Quality Assurance Engineer | Test Automation Expert',
   intro:
-    'I build the safety net around software — automated test suites, release protocols, and AI-assisted testing tools that catch problems before users do.',
+    'I automate software quality assurance using custom workflows, CI/CD integration, and live monitoring. My methodology focuses on risk-based automated test suites, efficient release protocols, alerts, and AI-driven remediation. Based in Los Angeles.',
   location: 'Los Angeles, CA',
   availability: 'Open to consulting engagements',
-  email: 'contact@artasheskocharyan.com',
+  email: 'artashesalexkocharyan@gmail.com',
   nav: [
     { label: 'Experience', id: 'experience' },
     { label: 'Projects', id: 'projects' },
@@ -17,13 +16,13 @@ export const site: SiteContent = {
     { label: 'Contact', id: 'contact' },
   ],
   socials: [
-    { label: 'GitHub', href: 'https://github.com/artasheskocharyan', icon: 'github', handle: '@artasheskocharyan' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/artasheskocharyan', icon: 'linkedin', handle: 'in/artasheskocharyan' },
-    { label: 'X', href: 'https://x.com/artasheskoch', icon: 'x', handle: '@artasheskoch' },
+    { label: 'GitHub', href: 'https://github.com/JustAnotherDevFromLA', icon: 'github', handle: '@JustAnotherDevFromLA' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/artashes-kocharyan/', icon: 'linkedin', handle: 'in/artashes-kocharyan' },
+    { label: 'X', href: 'https://x.com/expertfrogger', icon: 'x', handle: '@expertfrogger' },
   ],
   highlights: [
     { value: 'Testify', label: 'AI testing startup, founder' },
     { value: 'Meta', label: 'Founding CRS team member' },
-    { value: 'OWASP LA', label: 'Member & volunteer' },
+    { value: 'Altruist', label: 'Software quality assurance engineer' },
   ],
 }

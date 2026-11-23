@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { site } from '../content/site'
 import { Icon } from './Icon'
 import { Reveal } from './Reveal'
@@ -13,14 +13,21 @@ const fieldClass =
  * `fetch(endpoint, { method: 'POST', body: JSON.stringify(payload) })` call.
  */
 function submitByEmail(payload: { name: string; email: string; message: string }) {
-  const subject = `Portfolio inquiry from ${payload.name}`
+  const subject = `Message from ${payload.name}`
   const body = `${payload.message}\n\n—\n${payload.name}\n${payload.email}`
   window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
+type CopyState = 'idle' | 'copied' | 'failed'
+
 export function Contact() {
-  const [sent, setSent] = useState(false)
-  const [copied, setCopied] = useState(false)
+  const [copyState, setCopyState] = useState<CopyState>('idle')
+  const copiedTimer = useRef<number | undefined>(undefined)
+  const emailRef = useRef<HTMLAnchorElement>(null)
+
+  useEffect(() => {
+    return () => window.clearTimeout(copiedTimer.current)
+  }, [])
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -30,31 +37,42 @@ export function Contact() {
       email: String(data.get('email') ?? ''),
       message: String(data.get('message') ?? ''),
     })
-    setSent(true)
+  }
+
+  function selectEmail() {
+    const node = emailRef.current
+    if (!node) return
+    const range = document.createRange()
+    range.selectNodeContents(node)
+    const selection = window.getSelection()
+    selection?.removeAllRanges()
+    selection?.addRange(range)
   }
 
   async function copyEmail() {
     try {
       await navigator.clipboard.writeText(site.email)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 2000)
+      setCopyState('copied')
+      window.clearTimeout(copiedTimer.current)
+      copiedTimer.current = window.setTimeout(() => setCopyState('idle'), 2000)
     } catch {
-      // Clipboard permission denied — the mailto link above still works.
+      selectEmail()
+      setCopyState('failed')
     }
   }
 
   return (
     <Section
       id="contact"
-      eyebrow="04 / Contact"
-      title="Let's talk about release quality"
-      description="Consulting, automation strategy, or just comparing notes on testing tools — my inbox is open."
+      title="Contact"
+      lede="Email is the reliable way to reach me. The form only opens a draft. You send it."
     >
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
         <Reveal className="lg:col-span-5">
           <div className="flex h-full flex-col rounded-tile border border-line bg-surface p-6 sm:p-8">
             <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Direct</h3>
             <a
+              ref={emailRef}
               href={`mailto:${site.email}`}
               className="mt-4 inline-flex items-center gap-2.5 text-base font-medium break-all text-ink transition-colors duration-200 hover:text-accent"
             >
@@ -67,9 +85,12 @@ export function Contact() {
               onClick={copyEmail}
               className="mt-4 inline-flex w-fit items-center gap-2 rounded-full border border-line px-3.5 py-2 font-mono text-[11px] tracking-wide text-muted transition-colors duration-200 hover:border-accent/60 hover:text-accent"
             >
-              <Icon name={copied ? 'check' : 'copy'} className="h-3.5 w-3.5" />
-              {copied ? 'Copied' : 'Copy address'}
+              <Icon name={copyState === 'copied' ? 'check' : 'copy'} className="h-3.5 w-3.5" />
+              {copyState === 'copied' ? 'Copied' : 'Copy address'}
             </button>
+            <p aria-live="polite" className="mt-2 text-xs text-faint">
+              {copyState === 'failed' ? "Couldn't copy. The address is selected." : copyState === 'copied' ? 'Copied.' : ''}
+            </p>
 
             <div className="mt-8 border-t border-line/70 pt-6">
               <h3 className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">Elsewhere</h3>
@@ -134,7 +155,7 @@ export function Contact() {
                 required
                 name="message"
                 rows={6}
-                placeholder="What are you building, and what needs testing?"
+                placeholder="A role, a question, or a note"
                 className={`mt-2 resize-y ${fieldClass}`}
               />
             </label>
@@ -144,13 +165,11 @@ export function Contact() {
                 type="submit"
                 className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-canvas transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-soft hover:shadow-[0_12px_32px_-12px_var(--color-accent)]"
               >
-                Send message
+                Open email draft
                 <Icon name="arrow" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
               </button>
-              <p aria-live="polite" className="text-xs text-faint">
-                {sent
-                  ? 'Draft opened in your email client — hit send there.'
-                  : 'Opens a pre-filled draft in your email client.'}
+              <p className="text-xs text-faint">
+                Opens a draft in your email app. If it doesn't open, use the address above.
               </p>
             </div>
           </form>

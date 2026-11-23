@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-23T11:15:00.000Z",
+  "title": "Design System: Artashes Kocharyan",
+  "extensions": {
+    "colorMeta": {
+      "signal-orange": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "canonical": "#ff7a18",
+        "tonalRamp": ["oklch(15% 0.052 49.1)", "oklch(27% 0.113 49.1)", "oklch(38% 0.158 49.1)", "oklch(50% 0.184 49.1)", "oklch(62% 0.182 49.1)", "oklch(74% 0.151 49.1)", "oklch(86% 0.099 49.1)", "oklch(95% 0.052 49.1)"]
+      },
+      "signal-soft": {
+        "role": "primary",
+        "displayName": "Signal Soft",
+        "canonical": "#ffab6b",
+        "tonalRamp": ["oklch(15% 0.036 57)", "oklch(27% 0.077 57)", "oklch(38% 0.107 57)", "oklch(50% 0.125 57)", "oklch(62% 0.124 57)", "oklch(74% 0.103 57)", "oklch(86% 0.067 57)", "oklch(95% 0.036 57)"]
+      },
+      "signal-dim": {
+        "role": "primary",
+        "displayName": "Signal Dim",
+        "canonical": "#7a3708",
+        "tonalRamp": ["oklch(15% 0.03 48.8)", "oklch(27% 0.066 48.8)", "oklch(38% 0.091 48.8)", "oklch(50% 0.107 48.8)", "oklch(62% 0.105 48.8)", "oklch(74% 0.087 48.8)", "oklch(86% 0.057 48.8)", "oklch(95% 0.03 48.8)"]
+      },
+      "console-black": {
+        "role": "neutral",
+        "displayName": "Console Black",
+        "canonical": "#0a0b0d",
+        "tonalRamp": ["oklch(15% 0.002 264.5)", "oklch(27% 0.005 264.5)", "oklch(38% 0.007 264.5)", "oklch(50% 0.008 264.5)", "oklch(62% 0.008 264.5)", "oklch(74% 0.006 264.5)", "oklch(86% 0.004 264.5)", "oklch(95% 0.002 264.5)"]
+      },
+      "console-surface": {
+        "role": "neutral",
+        "displayName": "Console Surface",
+        "canonical": "#101216",
+        "tonalRamp": ["oklch(15% 0.003 264.3)", "oklch(27% 0.006 264.3)", "oklch(38% 0.008 264.3)", "oklch(50% 0.01 264.3)", "oklch(62% 0.01 264.3)", "oklch(74% 0.008 264.3)", "oklch(86% 0.005 264.3)", "oklch(95% 0.003 264.3)"]
+      },
+      "console-elevated": {
+        "role": "neutral",
+        "displayName": "Console Elevated",
+        "canonical": "#15181e",
+        "tonalRamp": ["oklch(15% 0.003 264.2)", "oklch(27% 0.007 264.2)", "oklch(38% 0.01 264.2)", "oklch(50% 0.012 264.2)", "oklch(62% 0.012 264.2)", "oklch(74% 0.01 264.2)", "oklch(86% 0.006 264.2)", "oklch(95% 0.003 264.2)"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#23262e",
+        "tonalRamp": ["oklch(15% 0.004 269.1)", "oklch(27% 0.008 269.1)", "oklch(38% 0.012 269.1)", "oklch(50% 0.014 269.1)", "oklch(62% 0.014 269.1)", "oklch(74% 0.011 269.1)", "oklch(86% 0.007 269.1)", "oklch(95% 0.004 269.1)"]
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "canonical": "#32363f",
+        "tonalRamp": ["oklch(15% 0.004 266.4)", "oklch(27% 0.009 266.4)", "oklch(38% 0.013 266.4)", "oklch(50% 0.015 266.4)", "oklch(62% 0.015 266.4)", "oklch(74% 0.012 266.4)", "oklch(86% 0.008 266.4)", "oklch(95% 0.004 266.4)"]
+      },
+      "readout-white": {
+        "role": "neutral",
+        "displayName": "Readout White",
+        "canonical": "#f2f4f7",
+        "tonalRamp": ["oklch(15% 0.002 258.3)", "oklch(27% 0.004 258.3)", "oklch(38% 0.005 258.3)", "oklch(50% 0.006 258.3)", "oklch(62% 0.006 258.3)", "oklch(74% 0.005 258.3)", "oklch(86% 0.003 258.3)", "oklch(95% 0.002 258.3)"]
+      },
+      "readout-muted": {
+        "role": "neutral",
+        "displayName": "Readout Muted",
+        "canonical": "#9ba1ad",
+        "tonalRamp": ["oklch(15% 0.004 264.4)", "oklch(27% 0.01 264.4)", "oklch(38% 0.014 264.4)", "oklch(50% 0.016 264.4)", "oklch(62% 0.016 264.4)", "oklch(74% 0.013 264.4)", "oklch(86% 0.008 264.4)", "oklch(95% 0.004 264.4)"]
+      },
+      "readout-faint": {
+        "role": "neutral",
+        "displayName": "Readout Faint",
+        "canonical": "#808795",
+        "tonalRamp": ["oklch(15% 0.005 264.4)", "oklch(27% 0.011 264.4)", "oklch(38% 0.015 264.4)", "oklch(50% 0.018 264.4)", "oklch(62% 0.018 264.4)", "oklch(74% 0.015 264.4)", "oklch(86% 0.01 264.4)", "oklch(95% 0.005 264.4)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The name in the first viewport." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles." },
+      "title": { "displayName": "Title", "purpose": "Organization names, project names, and hero highlight values." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs a hiring manager reads. Tile copy is 0.875rem; the opening paragraph is 1.125rem." },
+      "label": { "displayName": "Label", "purpose": "Eyebrows, dates, tags, and handles in JetBrains Mono." }
+    },
+    "shadows": [
+      { "name": "action-glow", "value": "0 12px 32px -12px var(--color-accent)", "purpose": "Primary button hover, paired with a 2px rise." },
+      { "name": "featured-glow", "value": "0 20px 50px -24px var(--color-accent)", "purpose": "Featured experience tile on hover." },
+      { "name": "tile-glow", "value": "0 24px 60px -32px var(--color-accent)", "purpose": "Project tile on hover." },
+      { "name": "resting-lift", "value": "0 20px 50px -30px rgba(0,0,0,0.7)", "purpose": "Ordinary experience tile on hover, with no orange." }
+    ],
+    "motion": [
+      { "name": "ease-out-soft", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Entrance reveal: opacity and an 18px rise over 0.6s." },
+      { "name": "hover-color", "value": "200ms", "purpose": "Color, border, and button lift." },
+      { "name": "hover-tile", "value": "300ms", "purpose": "Tile rise and border change." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The hot control. Signal Orange fill, used for the main action in a viewport.",
+      "html": "<button class=\"ds-btn-primary\">View projects <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 5v14M6 13l6 6 6-6\"/></svg></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--color-accent); color: var(--color-canvas); padding: 12px 20px; border: none; border-radius: 9999px; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; } .ds-btn-primary svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s; } .ds-btn-primary:hover { background: var(--color-accent-soft); transform: translateY(-2px); box-shadow: 0 12px 32px -12px var(--color-accent); } .ds-btn-primary:hover svg { transform: translateY(2px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The quiet action. Transparent pill with a strong hairline, turning orange on hover.",
+      "html": "<button class=\"ds-btn-secondary\">Get in touch <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7M17 7H9M17 7v8\"/></svg></button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--color-ink); padding: 12px 20px; border: 1px solid var(--color-line-strong); border-radius: 9999px; font-family: var(--font-sans); font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: color 0.2s, border-color 0.2s, transform 0.2s; } .ds-btn-secondary svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.2s; } .ds-btn-secondary:hover { color: var(--color-accent); border-color: var(--color-accent); transform: translateY(-2px); } .ds-btn-secondary:hover svg { transform: translateX(2px); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Inset field on a tile. Focus is a Signal Orange border, not the global ring.",
+      "html": "<label class=\"ds-field\"><span>Email</span><input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\" /></label>",
+      "css": ".ds-field { display: block; font-family: var(--font-sans); } .ds-field span { display: block; font-size: 0.75rem; font-weight: 500; color: var(--color-muted); } .ds-input { display: block; width: 16rem; margin-top: 8px; padding: 12px 16px; border: 1px solid var(--color-line); border-radius: 0.75rem; background: color-mix(in oklab, var(--color-elevated) 60%, transparent); color: var(--color-ink); font-family: var(--font-sans); font-size: 0.875rem; transition: border-color 0.2s; } .ds-input::placeholder { color: var(--color-faint); } .ds-input:hover { border-color: var(--color-line-strong); } .ds-input:focus { border-color: var(--color-accent); outline: none; }"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Quiet mono tag for a tool or skill on a tile.",
+      "html": "<span class=\"ds-chip\">Playwright</span>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; padding: 4px 10px; border: 1px solid var(--color-line); border-radius: 9999px; background: color-mix(in oklab, var(--color-elevated) 60%, transparent); color: var(--color-muted); font-family: var(--font-mono); font-size: 11px; letter-spacing: -0.01em; }"
+    },
+    {
+      "name": "Live Status",
+      "kind": "chip",
+      "refersTo": "chip-live",
+      "description": "Featured status pill. Orange at 12% strength, orange text, no border.",
+      "html": "<span class=\"ds-chip-live\">Venture</span>",
+      "css": ".ds-chip-live { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 9999px; background: color-mix(in oklab, var(--color-accent) 12%, transparent); color: var(--color-accent); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Tile",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Content container. Flat at rest, rises and glows orange on hover.",
+      "html": "<article class=\"ds-tile\"><p class=\"ds-tile-kicker\">Automation</p><h3>Migration &amp; Release Strategy</h3><p>Advising teams through platform migrations and release cutovers.</p></article>",
+      "css": ".ds-tile { max-width: 28rem; padding: 24px; border: 1px solid var(--color-line); border-radius: var(--radius-tile); background: var(--color-surface); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; } .ds-tile-kicker { margin: 0; color: var(--color-accent); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; } .ds-tile h3 { margin: 8px 0 0; color: var(--color-ink); font-family: var(--font-sans); font-size: 1.25rem; font-weight: 600; letter-spacing: -0.025em; } .ds-tile p:last-child { margin: 12px 0 0; color: var(--color-muted); font-family: var(--font-sans); font-size: 0.875rem; line-height: 1.625; } .ds-tile:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--color-accent) 50%, transparent); box-shadow: 0 24px 60px -32px var(--color-accent); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Section links. The current one is Readout White with a Signal Orange tick.",
+      "html": "<nav class=\"ds-nav\"><a href=\"#experience\">Experience</a><a class=\"is-current\" href=\"#projects\">Projects</a><a href=\"#about\">About</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 4px; font-family: var(--font-sans); } .ds-nav a { position: relative; padding: 8px 14px; border-radius: 9999px; color: var(--color-muted); font-size: 0.875rem; text-decoration: none; transition: color 0.2s; } .ds-nav a:hover { color: var(--color-ink); } .ds-nav a.is-current { color: var(--color-ink); } .ds-nav a.is-current::after { content: \"\"; position: absolute; left: 14px; right: 14px; bottom: 4px; height: 1px; background: var(--color-accent); } .ds-nav a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Monogram",
+      "kind": "custom",
+      "refersTo": "monogram",
+      "description": "32px Signal Orange mark with the initials, used at the start of the nav.",
+      "html": "<a class=\"ds-mark\" href=\"#top\">AK</a>",
+      "css": ".ds-mark { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 0.5rem; background: var(--color-accent); color: var(--color-canvas); font-family: var(--font-mono); font-size: 0.875rem; font-weight: 700; text-decoration: none; } .ds-mark:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Console",
+    "overview": "The site is a dark instrument panel for a person, not a product. Console Black is the chassis. Inter carries the name, the roles, and the paragraphs a hiring manager actually reads. JetBrains Mono is the readout: dates, tags, and handles. Signal Orange is the one live indicator. It marks the title, the primary action, the active section, and the labels that say where you are.\n\nThe mood is technical but human. Restraint keeps the chrome thin, and the orange plus the personal record keep the page from turning into a dashboard. Tiles sit flat on the chassis until a pointer arrives; then they rise. Motion is short, eased, and removed when the visitor asks for less of it.\n\nThe system refuses generic startup landing pages: gradient headlines, purple-blue glows, and marketing chrome.",
+    "keyCharacteristics": [
+      "Dark chassis by default, with a light reassignment of the same tokens",
+      "One chromatic signal, used rarely",
+      "Mono for labels, sans for reading",
+      "Pills for actions, 1.25rem tiles for content",
+      "Flat at rest, lifted on hover",
+      "Focus is always a 2px Signal Orange ring"
+    ],
+    "rules": [
+      {
+        "name": "The One Signal Rule",
+        "body": "Signal Orange is the only chromatic color. It marks the live title, the primary action, active navigation, and selection. It does not fill large surfaces. The hero wash is a 16% mix that fades out, not a second background.",
+        "section": "colors"
+      },
+      {
+        "name": "The Contrast Floor Rule",
+        "body": "Text tokens are chosen to clear 4.5:1 against Console Black and Console Surface. Readout Faint is part of that floor because mono labels are small.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readout Rule",
+        "body": "JetBrains Mono is for dates, meta, tags, and handles. Names, headings, and paragraphs stay in Inter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Single Chassis Rule",
+        "body": "New blocks join the 72rem column. They do not introduce a second max width, a full-bleed marketing band, or a sidebar.",
+        "section": "layout"
+      },
+      {
+        "name": "The Hover Lift Rule",
+        "body": "Surfaces are flat at rest. A shadow and a rise appear only as a hover response, and only on controls and tiles that already use them.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Pill and Tile Rule",
+        "body": "If it is an action or a status, it is a pill. If it holds a paragraph, it is a tile. Do not mix those jobs.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep Signal Orange as the only chromatic color, and keep it off large fills.",
+      "Do leave dark as the default. Light mode reassigns the same tokens; it does not introduce a second palette.",
+      "Do use Inter for reading and JetBrains Mono for labels.",
+      "Do lift primary buttons and tiles on hover, and leave them flat at rest.",
+      "Do draw focus as a 2px Signal Orange outline, 3px outside the control, with a 4px corner.",
+      "Do gate entrance motion, smooth scrolling, and the availability pulse behind a reduced-motion preference."
+    ],
+    "donts": [
+      "Don't use gradient headlines, purple-blue glows, or marketing chrome.",
+      "Don't add a second accent, a gradient text treatment, or a resting drop shadow on tiles.",
+      "Don't set paragraphs or the person's name in JetBrains Mono.",
+      "Don't invent a new resting shadow. The hover shadows already on buttons and tiles are the whole vocabulary.",
+      "Don't repeat the hero grid behind later sections."
+    ]
+  }
+}

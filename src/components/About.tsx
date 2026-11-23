@@ -8,8 +8,8 @@ export function About() {
   return (
     <Section
       id="about"
-      eyebrow="03 / About"
-      title="Continuous learning, on and off the clock"
+      title="About"
+      lede="Continuous learning, on and off the clock"
       description={`Based in ${site.location}.`}
     >
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
