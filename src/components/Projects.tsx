@@ -11,7 +11,7 @@ function TileHeader({ project }: { project: Project }) {
         <Icon name={project.icon} className="h-5 w-5" />
       </span>
       {project.status && (
-        <span className="rounded-full border border-line px-2.5 py-1 font-mono text-[10px] tracking-[0.12em] text-faint uppercase">
+        <span className="rounded-full border border-line px-2.5 py-1 font-mono text-[11px] tracking-[0.12em] text-faint uppercase">
           {project.status}
         </span>
       )}
@@ -61,7 +61,13 @@ function TileStack({ stack, className = '' }: { stack: string[]; className?: str
 }
 
 const tileClass =
+  'relative overflow-hidden rounded-tile border border-line bg-surface p-6 sm:p-7'
+
+const linkedTileClass =
   'group relative overflow-hidden rounded-tile border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_24px_60px_-32px_var(--color-accent)] sm:p-7'
+
+const quietTileClass =
+  'relative overflow-hidden rounded-tile border border-line bg-surface/60 p-6 sm:p-7'
 
 function HoverGlow() {
   return (
@@ -72,16 +78,17 @@ function HoverGlow() {
   )
 }
 
-function ProjectTile({ project }: { project: Project }) {
+function ProjectTile({ project, quiet = false }: { project: Project; quiet?: boolean }) {
   const Container = project.href ? 'a' : 'div'
   const linkProps = project.href ? { href: project.href, target: '_blank', rel: 'noreferrer' } : {}
+  const frame = quiet ? quietTileClass : project.href ? linkedTileClass : tileClass
 
   // A full-width tile splits into summary + details columns so it fills its
   // width instead of stretching one narrow column of text.
   if (project.layout === 'wide') {
     return (
-      <Container {...linkProps} data-project={project.id} className={`${tileClass} block h-full`}>
-        <HoverGlow />
+      <Container {...linkProps} data-project={project.id} className={`${frame} block h-full`}>
+        {!quiet && project.href && <HoverGlow />}
         <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <TileHeader project={project} />
@@ -89,7 +96,7 @@ function ProjectTile({ project }: { project: Project }) {
             <TileStack stack={project.stack} className="mt-6" />
           </div>
           <div className="lg:col-span-7 lg:border-l lg:border-line/70 lg:pl-12">
-            <p className="relative font-mono text-[10px] tracking-[0.16em] text-faint uppercase">What that involves</p>
+            <p className="relative font-mono text-[11px] tracking-[0.16em] text-faint uppercase">What that involves</p>
             <TileDetails details={project.details} className="mt-4 grid gap-3 sm:grid-cols-2 sm:gap-x-8" />
           </div>
         </div>
@@ -98,8 +105,8 @@ function ProjectTile({ project }: { project: Project }) {
   }
 
   return (
-    <Container {...linkProps} data-project={project.id} className={`${tileClass} flex h-full flex-col`}>
-      <HoverGlow />
+    <Container {...linkProps} data-project={project.id} className={`${frame} flex h-full flex-col`}>
+      {!quiet && project.href && <HoverGlow />}
       <TileHeader project={project} />
       <TileHeading project={project} />
       <TileDetails details={project.details} className="mt-5 space-y-2 border-t border-line/70 pt-5" />
@@ -112,16 +119,28 @@ export function Projects() {
   return (
     <Section
       id="projects"
-      eyebrow="02 / Projects & Skills"
-      title="Things I've shipped and run"
-      description="Client engagements, self-hosted infrastructure, and the internal tooling I built because the manual version was wasting my time."
+      title="Projects"
+      lede="Work a hiring manager can check against the roles above."
     >
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
-        {projects.map((project, index) => (
-          <Reveal key={project.id} delay={index * 80} className={project.span}>
-            <ProjectTile project={project} />
-          </Reveal>
-        ))}
+      <div className="grid grid-cols-1 gap-5">
+        {projects
+          .filter((project) => project.emphasis !== 'aside')
+          .map((project) => (
+            <Reveal key={project.id}>
+              <ProjectTile project={project} />
+            </Reveal>
+          ))}
+      </div>
+
+      <div className="mt-14">
+        <h3 className="text-lg font-semibold tracking-tight text-ink">Also running</h3>
+        <div className="mt-5 grid grid-cols-1 gap-5 lg:grid-cols-2">
+          {projects
+            .filter((project) => project.emphasis === 'aside')
+            .map((project) => (
+              <ProjectTile key={project.id} project={project} quiet />
+            ))}
+        </div>
       </div>
 
       <div className="mt-16">

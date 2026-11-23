@@ -45,6 +45,8 @@ export type ExperienceItem = {
   achievements: string[]
   stack: string[]
   href?: string
+  /** Another published role whose dates overlap this one. */
+  concurrentWith?: string
   /** Renders the accent-bordered treatment. Use for the flagship item. */
   featured?: boolean
 }
@@ -70,6 +72,8 @@ export type Project = {
   layout?: 'standard' | 'wide'
   href?: string
   status?: string
+  /** 'aside' sits in the quieter Also running group. Defaults to the proof grid. */
+  emphasis?: 'proof' | 'aside'
 }
 
 export type SkillGroup = {

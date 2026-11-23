@@ -31,12 +31,18 @@ function ExperienceCard({ item }: { item: ExperienceItem }) {
           {meta.label}
         </span>
         <span className="font-mono text-[11px] tracking-wide text-faint">{item.period}</span>
+        {item.concurrentWith && (
+          <span className="font-mono text-[11px] tracking-wide text-accent">
+            Concurrent with {item.concurrentWith}
+          </span>
+        )}
       </div>
 
       <h3 className="mt-5 text-xl font-semibold tracking-tight text-ink">
         {item.href ? (
           <a href={item.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 hover:text-accent">
             {item.organization}
+            <span className="sr-only"> on LinkedIn</span>
             <Icon name="arrow" className="h-4 w-4" />
           </a>
         ) : (
@@ -68,27 +74,28 @@ export function Experience() {
   return (
     <Section
       id="experience"
-      eyebrow="01 / Experience & Ventures"
-      title="Where I've built quality in"
-      description="From founding an AI testing startup to standing up reliability processes at scale — the through-line is making release confidence measurable."
+      title="Experience"
+      lede="Founder of Testify, founding member of Meta's Central Reliability Support team, and QA at Altruist."
     >
-      <ol className="relative space-y-5 sm:space-y-6 sm:pl-10">
+      <div className="relative">
         <span
           aria-hidden="true"
           className="absolute top-2 bottom-2 left-[15px] hidden w-px bg-gradient-to-b from-accent/60 via-line to-transparent sm:block"
         />
-        {experience.map((item, index) => (
-          <Reveal as="li" key={item.id} delay={index * 70} className="relative">
-            <span
-              aria-hidden="true"
-              className={`absolute top-8 -left-[31px] hidden h-3 w-3 rounded-full ring-4 ring-canvas sm:block ${
-                item.featured ? 'bg-accent' : 'bg-line-strong'
-              }`}
-            />
-            <ExperienceCard item={item} />
-          </Reveal>
-        ))}
-      </ol>
+        <ol className="relative space-y-5 sm:space-y-6 sm:pl-10">
+          {experience.map((item, index) => (
+            <Reveal as="li" key={item.id} delay={index * 70} className="relative">
+              <span
+                aria-hidden="true"
+                className={`absolute top-8 -left-[31px] hidden h-3 w-3 rounded-full ring-4 ring-canvas sm:block ${
+                  item.featured ? 'bg-accent' : 'bg-line-strong'
+                }`}
+              />
+              <ExperienceCard item={item} />
+            </Reveal>
+          ))}
+        </ol>
+      </div>
     </Section>
   )
 }

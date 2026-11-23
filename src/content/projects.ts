@@ -39,6 +39,7 @@ export const projects: Project[] = [
       'Adds a verifying node to the network in support of decentralization.',
     ],
     stack: ['Bitcoin Core', 'Electrum server', 'Linux', 'Self-hosting'],
+    emphasis: 'aside',
   },
   {
     id: 'ticket-extension',
@@ -55,6 +56,7 @@ export const projects: Project[] = [
       'Keeps timesheet tracking aligned with the ticket it belongs to.',
     ],
     stack: ['JavaScript', 'Chrome Extension APIs', 'Workflow automation'],
+    emphasis: 'aside',
   },
 ]
 
